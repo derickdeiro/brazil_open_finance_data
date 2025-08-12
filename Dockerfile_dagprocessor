@@ -1,0 +1,20 @@
+FROM apache/airflow:3.0.3-python3.12
+WORKDIR /opt/airflow
+
+ARG INSTALL_MYSQL_CLIENT=false
+ARG INSTALL_MSSQL_CLIENT=true
+
+# Copy requirements
+COPY ./requirements-dagprocessor.txt /opt/airflow/requirements.txt
+COPY ./airflow.cfg /opt/airflow/airflow.cfg
+
+# Install uv for faster package installation
+RUN pip install uv
+
+# Install Python dependencies using uv
+RUN uv pip install --no-cache-dir -r /opt/airflow/requirements.txt
+
+# Switch to non-root user
+USER airflow
+
+CMD ["airflow", "dag-processor"]
