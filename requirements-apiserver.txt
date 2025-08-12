@@ -1,0 +1,9 @@
+apache-airflow[celery]==3.0.3
+apache-airflow[microsoft-azure]==3.0.3
+apache-airflow-providers-fab==2.3.0
+apache-airflow-providers-microsoft-mssql==4.3.1
+apache-airflow-providers-microsoft-azure==12.5.0
+flask-wtf==1.2.2
+authlib==1.6.1
+psycopg2-binary>=2.9.10
+asyncpg==0.30.0
